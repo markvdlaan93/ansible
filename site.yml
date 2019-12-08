@@ -3,7 +3,7 @@
 
 - name: Install packages
   hosts: all
-  remote_user: root
+  remote_user: mark
 
   roles:
     - common

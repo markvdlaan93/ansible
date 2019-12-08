@@ -1,5 +1,11 @@
 ---
-- name: Install apache httpd  (state=present is optional)
+- name: Install Docker
   apt:
-    name: apache2
-    state: presents
+    name: docker.io
+    state: present
+  become: yes
+
+- name: Make sure Docker is running
+  systemd:
+    state: started
+    name: docker
