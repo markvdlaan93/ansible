@@ -3,6 +3,9 @@
 
 - name: Install packages
   hosts: all
+  vars:
+    terraform_version: 0.11.14
+    terraform_dir: /tmp
   remote_user: mark
 
   roles:
