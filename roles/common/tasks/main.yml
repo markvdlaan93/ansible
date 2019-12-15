@@ -34,42 +34,8 @@
     state: link
   become: yes
 
-- name: Download Golang archive Linux 64 bits
-  get_url:
-    url: https://dl.google.com/go/go{{golang_version}}.linux-amd64.tar.gz
-    dest: "/tmp/golang-{{golang_version}}.tar.gz"
-
-- name: Unarchive Golang archive
-  unarchive:
-    src: "/tmp/golang-{{golang_version}}.tar.gz"
-    dest: /tmp
-    copy: no
-
-- name: Change go executable permissions
-  file:
-    path: /tmp/go
-    owner: root
-    group: root
+- name: Install go with snap
+  snap:
+    name: go
+    classic: yes
   become: yes
-
-- name: Adding go command to user path
-  file: 
-    src: /tmp/go
-    dest: /usr/local/go
-    state: link
-  become: yes
-
-- name: Add GOPATH to profile
-  lineinfile:
-    dest: ~/.profile
-    state: present
-    line: 'export GOPATH=$HOME/work'
-
-- name: Add PATH to profile
-  lineinfile:
-    dest: ~/.profile
-    state: present
-    line: 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin'
-
-- name: source profile
-  shell: sudo -iu {{ansible_user_id}} source ~/.profile
