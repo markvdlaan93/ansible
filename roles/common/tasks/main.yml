@@ -44,13 +44,21 @@
   get_url:
     url: https://download.jetbrains.com/go/goland-2019.3.tar.gz
     dest: /tmp/goland-2019.3.tar.gz
+  register: goland
 
 - name: Unarchive GoLand zip
   unarchive:
     src: /tmp/goland-2019.3.tar.gz
     dest: /tmp
+  when: goland.changed
 
 - name: Run install script for GoLand
   shell:
     cmd: /tmp/GoLand-2019.3/bin/goland.sh
-  
+  when: goland.changed
+
+- name: Install qbittorrent
+  apt:
+    name: qbittorrent
+    state: present
+  become: yes
