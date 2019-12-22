@@ -62,3 +62,9 @@
     name: qbittorrent
     state: present
   become: yes
+
+- name: Install VLC media player
+  snap:
+    name: vlc
+    classic: yes
+  become: yes
