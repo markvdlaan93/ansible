@@ -73,3 +73,6 @@
   file:
     path: ~/Documents/github
     state: directory
+
+- name: Install role for installing Sublime text editor
+  shell: ansible-galaxy install jdauphant.sublimetext
