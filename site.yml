@@ -9,5 +9,5 @@
   remote_user: mark
 
   roles:
-    - chaosmail.sublime-text
-    - common
+    - role: chaosmail.sublime-text
+    - role: common
