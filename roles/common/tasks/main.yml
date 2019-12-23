@@ -68,3 +68,8 @@
     name: vlc
     classic: yes
   become: yes
+
+- name: Creates github repo directory
+  file:
+    path: ~/Documents/github
+    state: directory
