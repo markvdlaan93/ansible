@@ -6,8 +6,11 @@
   vars:
     terraform_version: 0.11.14
     golang_version: 1.13.5
+    google_apt_file: /etc/apt/sources.list.d/google-chrome.list
   remote_user: mark
 
   roles:
     - role: chaosmail.sublime-text
+    - role: googlechrome
+      become: yes
     - role: common

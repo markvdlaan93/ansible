@@ -1,7 +1,4 @@
 ---
-- name: Pin favorites in launcher
-  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop']"
-
 - name: Install Docker
   apt:
     name: docker.io
@@ -35,6 +32,12 @@
     src: /tmp/terraform
     dest: /usr/bin/terraform
     state: link
+  become: yes
+
+- name: Install Visual Studio Code with snap
+  snap:
+    name: code
+    classic: yes
   become: yes
 
 - name: Install go with snap
@@ -76,3 +79,6 @@
   file:
     path: ~/Documents/github
     state: directory
+
+- name: Pin favorites in launcher
+  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'code.desktop']"
