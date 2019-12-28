@@ -80,5 +80,18 @@
     path: ~/Documents/github
     state: directory
 
+- name: Install Simplenote
+  snap:
+    name: simplenote
+    classic: yes
+  become: yes
+
+- name: Make sure Snap desktop applications can be added to Gnome launcher
+  file:
+    src: /var/lib/snapd/desktop/applications/
+    dest: /usr/share/applications/snap
+    state: link
+  become: yes
+
 - name: Pin favorites in launcher
-  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'code.desktop']"
+  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'simplenote_simplenote.desktop', 'code.desktop']"
