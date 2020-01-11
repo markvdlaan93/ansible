@@ -80,6 +80,15 @@
     path: ~/Documents/github
     state: directory
 
+- name: Clone git repositories
+  git:
+    repo: "git@github.com:markvdlaan93/{{item}}.git"
+    dest: "~/Documents/github/{{item}}"
+  with_items:
+    - "aws-terraform"
+    - "markvdlaan93.github.io"
+    - "avr-projects"
+
 - name: Install Simplenote
   snap:
     name: simplenote
