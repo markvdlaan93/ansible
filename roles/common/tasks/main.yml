@@ -1,9 +1,14 @@
 ---
-- name: Install Docker
+- name: Install apt packages
   apt:
-    name: docker.io
+    name: "{{item}}"
     state: present
   become: yes
+  with_items:
+    - docker.io
+    - qbittorrent
+    - ruby-full
+    - 
 
 - name: Make sure Docker is running
   systemd:
@@ -62,12 +67,6 @@
   shell:
     cmd: /tmp/GoLand-2019.3/bin/goland.sh
   when: goland.changed
-
-- name: Install qbittorrent
-  apt:
-    name: qbittorrent
-    state: present
-  become: yes
 
 - name: Install VLC media player
   snap:
