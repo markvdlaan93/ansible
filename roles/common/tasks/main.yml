@@ -8,7 +8,11 @@
     - docker.io
     - qbittorrent
     - ruby-full
-    - 
+
+- name: Install Bundler
+  gem:
+    name: bundler
+    state: present
 
 - name: Make sure Docker is running
   systemd:
