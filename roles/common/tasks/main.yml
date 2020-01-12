@@ -1,14 +1,9 @@
 ---
 - name: Install apt packages
   apt:
-    name: "{{item}}"
+    name: ['docker.io', 'qbittorrent', 'ruby-full', 'virtualbox']
     state: present
   become: yes
-  with_items:
-    - docker.io
-    - qbittorrent
-    - ruby-full
-    - virtualbox
 
 - name: Install Bundler
   gem:
