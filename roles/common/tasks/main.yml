@@ -8,6 +8,7 @@
     - docker.io
     - qbittorrent
     - ruby-full
+    - virtualbox
 
 - name: Install Bundler
   gem:
