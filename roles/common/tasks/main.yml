@@ -1,7 +1,7 @@
 ---
 - name: Install apt packages
   apt:
-    name: ['docker.io', 'qbittorrent', 'ruby-full', 'virtualbox', 'nmap', 'wireshark']
+    name: ['docker.io', 'qbittorrent', 'ruby-full', 'virtualbox', 'nmap', 'wireshark', 'net-tools']
     state: present
   become: yes
 
@@ -102,7 +102,7 @@
   become: yes
 
 - name: Pin favorites in launcher
-  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'simplenote_simplenote.desktop', 'code.desktop', 'virtualbox.desktop']"
+  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'simplenote_simplenote.desktop', 'code.desktop', 'virtualbox.desktop', 'wireshark.desktop']"
 
 - name: Turn on night light mode
   shell: gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
