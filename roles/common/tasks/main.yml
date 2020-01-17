@@ -1,7 +1,18 @@
 ---
 - name: Install apt packages
   apt:
-    name: ['docker.io', 'qbittorrent', 'ruby-full', 'virtualbox', 'nmap', 'wireshark', 'net-tools']
+    name: [
+      'docker.io', 
+      'qbittorrent', 
+      'ruby-full', 
+      'virtualbox', 
+      'nmap', 
+      'wireshark', 
+      'net-tools',
+      'sleuthkit',
+      'gnome-shell-extensions',
+      'gnome-online-accounts'
+    ]
     state: present
   become: yes
 
@@ -39,17 +50,17 @@
     state: link
   become: yes
 
-- name: Install Visual Studio Code with snap
+- name: Install snap packages
   snap:
-    name: code
+    name: "{{item}}"
     classic: yes
   become: yes
-
-- name: Install go with snap
-  snap:
-    name: go
-    classic: yes
-  become: yes
+  with_items:
+    - code
+    - go
+    - vlc
+    - simplenote
+    - spotify
 
 - name: Fetch GoLand zip
   get_url:
@@ -68,12 +79,6 @@
     cmd: /tmp/GoLand-2019.3/bin/goland.sh
   when: goland.changed
 
-- name: Install VLC media player
-  snap:
-    name: vlc
-    classic: yes
-  become: yes
-
 - name: Creates github repo directory
   file:
     path: ~/Documents/github
@@ -88,12 +93,6 @@
     - "markvdlaan93.github.io"
     - "avr-projects"
 
-- name: Install Simplenote
-  snap:
-    name: simplenote
-    classic: yes
-  become: yes
-
 - name: Make sure Snap desktop applications can be added to Gnome launcher
   file:
     src: /var/lib/snapd/desktop/applications/
@@ -102,7 +101,7 @@
   become: yes
 
 - name: Pin favorites in launcher
-  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'simplenote_simplenote.desktop', 'code.desktop', 'virtualbox.desktop', 'wireshark.desktop']"
+  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'simplenote_simplenote.desktop', 'code.desktop']"
 
 - name: Turn on night light mode
   shell: gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
