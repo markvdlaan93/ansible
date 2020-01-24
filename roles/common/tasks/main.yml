@@ -11,7 +11,8 @@
       'net-tools',
       'sleuthkit',
       'gnome-shell-extensions',
-      'gnome-online-accounts'
+      'gnome-online-accounts',
+      'nnn'
     ]
     state: present
   become: yes
