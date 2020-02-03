@@ -12,10 +12,21 @@
       'sleuthkit',
       'gnome-shell-extensions',
       'gnome-online-accounts',
-      'nnn'
+      'nnn',
+      'terminator',
+      'crunch',
+      'default-jdk',
+      'maven',
+      'python-pip',
+      'hashcat',
+      'john'
     ]
     state: present
   become: yes
+
+- name: Install pip packages
+  pip:
+    name: setuptools
 
 - name: Install Bundler
   gem:
@@ -62,6 +73,9 @@
     - vlc
     - simplenote
     - spotify
+    - insomnia
+    - postman
+    - intellij-idea-community
 
 - name: Fetch GoLand zip
   get_url:
@@ -90,9 +104,19 @@
     repo: "git@github.com:markvdlaan93/{{item}}.git"
     dest: "~/Documents/github/{{item}}"
   with_items:
-    - "aws-terraform"
-    - "markvdlaan93.github.io"
-    - "avr-projects"
+    - aws-terraform
+    - markvdlaan93.github.io
+    - avr-projects
+
+- name: Clone wifite repo
+  git:
+    repo: git@github.com:derv82/wifite2.git
+    dest: ~/Documents/github/wifite2
+
+- name: Run setup.py from wifite
+  shell: python /home/mark/Documents/github/wifite2/setup.py install
+  become: yes
+  ignore_errors: yes
 
 - name: Make sure Snap desktop applications can be added to Gnome launcher
   file:
@@ -102,7 +126,7 @@
   become: yes
 
 - name: Pin favorites in launcher
-  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'org.gnome.Terminal.desktop', 'sublime_text.desktop', 'simplenote_simplenote.desktop', 'code.desktop']"
+  shell: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'google-chrome.desktop', 'sublime_text.desktop', 'simplenote_simplenote.desktop', 'code.desktop', 'postman_postman.desktop']"
 
 - name: Turn on night light mode
   shell: gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
