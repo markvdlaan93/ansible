@@ -20,7 +20,8 @@
       'python-pip',
       'hashcat',
       'john',
-      'python3-pip'
+      'python3-pip',
+      'virtualenv'
     ]
     state: present
   become: yes
@@ -28,8 +29,7 @@
 - name: Install pip python 3 packages
   pip:
     name: [
-      'tensorflow',
-      'virtualenv'
+      'tensorflow'
     ]
     executable: pip3
 
