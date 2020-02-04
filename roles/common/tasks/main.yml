@@ -27,7 +27,10 @@
 
 - name: Install pip python 3 packages
   pip:
-    name: tensorflow
+    name: [
+      'tensorflow',
+      'virtualenv'
+    ]
     executable: pip3
 
 - name: Install pip python 2 packages
