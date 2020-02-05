@@ -21,7 +21,8 @@
       'hashcat',
       'john',
       'python3-pip',
-      'virtualenv'
+      'virtualenv',
+      'imagemagick'
     ]
     state: present
   become: yes
