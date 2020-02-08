@@ -22,7 +22,8 @@
       'john',
       'python3-pip',
       'virtualenv',
-      'imagemagick'
+      'imagemagick',
+      'okular'
     ]
     state: present
   become: yes
