@@ -86,6 +86,7 @@
     - insomnia
     - postman
     - intellij-idea-community
+    - drawio
 
 - name: Fetch GoLand zip
   get_url:
