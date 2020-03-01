@@ -4,6 +4,7 @@
     name: [
       'docker.io', 
       'qbittorrent', 
+      'vim', 
       'ruby-full', 
       'virtualbox', 
       'nmap', 
