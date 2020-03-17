@@ -89,6 +89,7 @@
     - postman
     - intellij-idea-community
     - drawio
+    - skype
 
 - name: Fetch GoLand zip
   get_url:
