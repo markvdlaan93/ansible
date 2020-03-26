@@ -90,6 +90,7 @@
     - intellij-idea-community
     - drawio
     - skype
+    - dbeaver-ce
 
 - name: Fetch GoLand zip
   get_url:
