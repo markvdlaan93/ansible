@@ -26,7 +26,7 @@
       'imagemagick',
       'okular',
       'libleptonica-dev',
-      'libtesseract-dev.'
+      'libtesseract-dev'
     ]
     state: present
   become: yes
