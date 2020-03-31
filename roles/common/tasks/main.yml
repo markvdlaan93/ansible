@@ -24,7 +24,9 @@
       'python3-pip',
       'virtualenv',
       'imagemagick',
-      'okular'
+      'okular',
+      'libleptonica-dev',
+      'libtesseract-dev.'
     ]
     state: present
   become: yes
