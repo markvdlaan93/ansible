@@ -26,7 +26,9 @@
       'imagemagick',
       'okular',
       'libleptonica-dev',
-      'libtesseract-dev'
+      'libtesseract-dev',
+      'wine-stable', 
+      'winetricks'
     ]
     state: present
   become: yes
