@@ -33,13 +33,6 @@
     state: present
   become: yes
 
-- name: Install pip python 3 packages
-  pip:
-    name: [
-      'tensorflow'
-    ]
-    executable: pip3
-
 - name: Install pip python 2 packages
   pip:
     name: setuptools
